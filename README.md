@@ -37,7 +37,6 @@ familyable gem will be comming soon for now get it from this repo.. actually its
 
 ### Usage
 
-quick note: all the instance methods above (accept for master) take an optional parameter *include\_self=false*.  it does what you exactly what you think.
 -----------------------------------------------------------
 
 Example: Adding Relationships to an existing `Person` model:
@@ -60,4 +59,14 @@ class Person < ActiveRecord::Base
 end
 ```
 
-Thats it!
+##### Step 3: You're done! start coding
+
+quick note: all the instance methods above (accept for master) take an optional parameter *include\_self=false*.  it does what you exactly what you think.
+
+```ruby
+Person.masters
+person.master
+person.descendents
+person.descendents(true)
+...
+```
