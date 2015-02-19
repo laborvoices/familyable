@@ -23,7 +23,7 @@ This is a **huge** performance gain.  In fact, being able build the above method
 
 ##### WARNING: This project is still in development
     [x] create relationship concern
-    [ ] create generators for relationship models
+    [X] create generators for relationship models
     [ ] clean up concern
     [ ] tests tests tests
 
@@ -33,9 +33,31 @@ You must be using a postgres data base... thats where the single-db-query magic 
 
 ### Installation
 
-...
+familyable gem will be comming soon for now get it from this repo.. actually its too soon to use it - but soon!!!
 
 ### Usage
 
 quick note: all the instance methods above (accept for master) take an optional parameter *include\_self=false*.  it does what you exactly what you think.
+-----------------------------------------------------------
 
+Example: Adding Relationships to an existing `Person` model:
+
+##### Step 1: Generate Relationship Model
+
+```
+$  bundle exec rails g familyable:relationship Person
+$  bundle exec rake db:migrate
+```
+
+
+##### Step 2: Add Relationships Concern to Model
+
+_app/models/person.rb_
+```ruby
+class Person < ActiveRecord::Base
+    include Familyable::Relationships
+    ...
+end
+```
+
+Thats it!
