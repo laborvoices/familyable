@@ -4,7 +4,7 @@ This gem makes creating self-referential parent child relationships on a model e
 
 You also get the following instance methods:
 
-* decendents
+* descendents
 * elders
 * siblings
 * family    
