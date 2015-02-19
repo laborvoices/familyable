@@ -23,9 +23,7 @@ This is a **huge** performance gain.  In fact, being able build the above method
 
 ##### WARNING: This project is still in development
     [x] create relationship concern
-    [ ] create generators for migration files
-    [ ] relationship-concern
-    [ ] relationship-model generator
+    [ ] create generators for relationship models
     [ ] tests tests tests
 
 ### Requirments
