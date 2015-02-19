@@ -1,4 +1,4 @@
-module SurveyLink
+module Familyable
   module Relationships
   extend ActiveSupport::Concern
 
