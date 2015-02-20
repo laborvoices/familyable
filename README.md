@@ -90,7 +90,7 @@ person.descendents(true)
 **Rails Engine Note**: For use with rails engines use the full model name from the the root of your Engine directory and require it in your engine.rb
 
 ```
-$  bundle exec rails g familyable:relationships MyEngine::Person
+$  bundle exec rails g familyable:relationships EngineName::Person
 ```
 
 *lib/engine_name/engine.rb*
