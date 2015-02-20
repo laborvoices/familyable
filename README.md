@@ -60,6 +60,33 @@ $  bundle exec rails g familyable:relationships Person
 $  bundle exec rake db:migrate
 ```
 
+##### Step 2: Add Relationships Concern to Model
+
+_app/models/person.rb_
+```ruby
+class Person < ActiveRecord::Base
+    include Familyable::Relationships
+    ...
+end
+```
+
+For use inside of rails engines see [this](#rails_engines) note.
+
+##### Step 3: You're done! start coding
+
+quick note: all the instance methods above (accept for master) take an optional parameter *include\_self=false*.  it does what you exactly what you think.
+
+```ruby
+Person.masters
+person.master
+person.descendents
+person.descendents(true)
+...
+```
+
+-----------------------------------------------------------
+<a name="rails_engines"></a>
+
 **Rails Engine Note**: For use with rails engines use the full model name from the the root of your Engine directory and require it in your engine.rb
 
 ```
@@ -73,26 +100,4 @@ require 'familyable'
 module EngineName
   class Engine < ::Rails::Engine
   ...
-```
-
-##### Step 2: Add Relationships Concern to Model
-
-_app/models/person.rb_
-```ruby
-class Person < ActiveRecord::Base
-    include Familyable::Relationships
-    ...
-end
-```
-
-##### Step 3: You're done! start coding
-
-quick note: all the instance methods above (accept for master) take an optional parameter *include\_self=false*.  it does what you exactly what you think.
-
-```ruby
-Person.masters
-person.master
-person.descendents
-person.descendents(true)
-...
 ```
