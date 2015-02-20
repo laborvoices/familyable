@@ -28,7 +28,7 @@ This is a **[huge](https://github.com/brookisme/familyable-testapp)** performanc
     [ ] generate data for testapp
     [ ] tests tests tests
     [ ] refactor concern
-    [ ] add babies methods (class and instance)?
+    [ ] add servents methods (class and instance)?
 
 
 ### Requirments
