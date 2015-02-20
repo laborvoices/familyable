@@ -37,7 +37,15 @@ You must be using a postgres data base... thats where the single-db-query magic 
 
 ### Installation
 
-familyable gem will be comming soon for now get it from this repo.. actually its too soon to use it - but soon!!!
+Note: use with caution. This gem is still in developement
+
+*Gemfile*
+```
+gem 'ng_on_rails'
+```
+```
+$  bundle install
+```
 
 ### Usage
 
@@ -52,12 +60,20 @@ $  bundle exec rails g familyable:relationships Person
 $  bundle exec rake db:migrate
 ```
 
-Note: For use with Rails Engines use the full model name from the the root of your Engine directory.
+**Rails Engine Note**: For use with rails engines use the full model name from the the root of your Engine directory and require it in your engine.rb
 
 ```
 $  bundle exec rails g familyable:relationships MyEngine::Person
 ```
 
+*lib/engine_name/engine.rb*
+```ruby
+...
+require 'familyable'
+module EngineName
+  class Engine < ::Rails::Engine
+  ...
+```
 
 ##### Step 2: Add Relationships Concern to Model
 
