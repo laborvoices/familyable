@@ -2,6 +2,8 @@ module Familyable
   module Relationships
   extend ActiveSupport::Concern
 
+
+
     included do
       has_many relationships_name.to_sym
       has_many :children, through: relationships_name.to_sym

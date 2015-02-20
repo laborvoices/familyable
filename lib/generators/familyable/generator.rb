@@ -11,13 +11,28 @@ module Familyable
       @model_name.camelize
     end
 
-    def model_base_name
-      @model_name.underscore.split("/").last
+    def clean_model_class_name
+      model_class_name.split("::").last
     end
 
+    def model_base_name
+      @model_name.underscore
+    end
+
+    def clean_model_base_name
+      model_base_name.split("/").last
+    end
 
     def relationship_class_name
       "#{model_class_name}Relationship"
+    end
+
+    def clean_relationship_class_name
+      "#{clean_model_class_name}Relationship"
+    end
+
+    def relationship_model_path
+      "#{Rails.root}/app/models/#{relationship_class_name.underscore}.rb"
     end
   end
 end
