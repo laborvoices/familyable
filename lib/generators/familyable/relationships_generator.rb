@@ -1,6 +1,6 @@
 require File.join(File.dirname(__FILE__), 'generator')
 module Familyable
-  class RelationshipGenerator < Familyable::Generator
+  class RelationshipsGenerator < Familyable::Generator
     desc "Options and methods for Familyable::Relationship"
     
     argument :model_name, type: :string, required: true, desc: "model name"    

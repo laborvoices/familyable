@@ -44,7 +44,7 @@ Example: Adding Relationships to an existing `Person` model:
 ##### Step 1: Generate Relationship Model
 
 ```
-$  bundle exec rails g familyable:relationship Person
+$  bundle exec rails g familyable:relationships Person
 $  bundle exec rake db:migrate
 ```
 
