@@ -41,7 +41,7 @@ Note: use with caution. This gem is still in developement
 
 *Gemfile*
 ```
-gem 'ng_on_rails'
+gem 'familyable'
 ```
 ```
 $  bundle install
