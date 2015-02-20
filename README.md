@@ -24,8 +24,10 @@ This is a **huge** performance gain.  In fact, being able build the above method
 ##### WARNING: This project is still in development
     [x] create relationship concern
     [X] create generators for relationship models
-    [ ] clean up concern
+    [ ] check that it works with engines
     [ ] tests tests tests
+    [ ] refactor concern
+
 
 ### Requirments
 
