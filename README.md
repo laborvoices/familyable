@@ -25,6 +25,7 @@ This is a **[huge](https://github.com/brookisme/familyable-testapp)** performanc
     [x] create relationship concern
     [X] create generators for relationship models
     [ ] check that it works with engines
+    [ ] generate data for testapp
     [ ] tests tests tests
     [ ] refactor concern
 
