@@ -225,7 +225,7 @@ module Familyable
     def query_call(where_sql,include_self=false)
       call = self.class.where(where_sql)
       call = call.where.not(id: id) unless include_self
-      call.order("#{table_name}.name")
+      call    
     end
 
     def klass

@@ -15,6 +15,14 @@ module Familyable
       model_class_name.split("::").last
     end
 
+    def engine_name
+      parts = model_class_name.split("::")
+      if parts.length > 1
+        parts.pop()
+        parts.join("::")
+      end
+    end
+
     def model_base_name
       @model_name.underscore
     end
@@ -31,8 +39,16 @@ module Familyable
       "#{clean_model_class_name}Relationship"
     end
 
+    def app_root_path
+      if engine_name.nil?
+        "#{Rails.root}"
+      else
+        "#{engine_name.constantize::Engine.root}"
+      end
+    end
+
     def relationship_model_path
-      "#{Rails.root}/app/models/#{relationship_class_name.underscore}.rb"
+      "#{app_root_path}/app/models/#{relationship_class_name.underscore}.rb"
     end
   end
 end

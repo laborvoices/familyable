@@ -24,10 +24,11 @@ This is a **[huge](https://github.com/brookisme/familyable-testapp)** performanc
 ##### WARNING: This project is still in development
     [x] create relationship concern
     [X] create generators for relationship models
-    [ ] check that it works with engines
+    [X] check that it works with engines
     [ ] generate data for testapp
     [ ] tests tests tests
     [ ] refactor concern
+    [ ] add babies methods (class and instance)?
 
 
 ### Requirments
@@ -49,6 +50,12 @@ Example: Adding Relationships to an existing `Person` model:
 ```
 $  bundle exec rails g familyable:relationships Person
 $  bundle exec rake db:migrate
+```
+
+Note: For use with Rails Engines use the full model name from the the root of your Engine directory.
+
+```
+$  bundle exec rails g familyable:relationships MyEngine::Person
 ```
 
 
