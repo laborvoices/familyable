@@ -17,7 +17,7 @@ and the class method:
 Standard stuff I know but...
 ##### Everyone of the methods above works with a single call to the data base!!!
 
-This is a **huge** performance gain.  In fact, being able build the above methods with a single database call was the entire motivation for gemifiying something that otherwise was entirely straight forward.  It should be noted that this was built the day after reading [this](http://hashrocket.com/blog/posts/recursive-sql-in-activerecord).
+This is a **[huge](https://github.com/brookisme/familyable-testapp)** performance gain.  In fact, being able build the above methods with a single database call was the entire motivation for gemifiying something that otherwise was entirely straight forward.  It should be noted that this was built the day after reading [this](http://hashrocket.com/blog/posts/recursive-sql-in-activerecord).
 
 -----------------------------------------------------------
 
