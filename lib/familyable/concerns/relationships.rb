@@ -135,21 +135,21 @@ module Familyable
 
       def relationship_class_name
        if @relationship_class_name.nil?
-           @relationship_class_name = "#{self.name.split("::").last}Relationship"
+           @relationship_class_name = "#{self.name.demodulize}Relationship"
         end
         @relationship_class_name
       end
 
       def model_name
        if @model_name.nil?
-           @model_name = "#{self.name.split("::").last.downcase}"
+           @model_name = "#{self.name.demodulize.downcase}"
         end
         @model_name
       end
 
       def relationships_name
        if @relationships_name.nil?
-           @relationships_name = "#{self.name.split("::").last.downcase}_relationships"
+           @relationships_name = "#{self.name.demodulize.downcase}_relationships"
         end
         @relationships_name
       end
@@ -163,7 +163,7 @@ module Familyable
 
       def parent_field_name
         if @parent_field_name.nil?
-           @parent_field_name = "#{self.name.split("::").last.downcase}_id"
+           @parent_field_name = "#{self.name.demodulize.downcase}_id"
         end
         @parent_field_name
       end

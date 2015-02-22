@@ -12,7 +12,7 @@ module Familyable
     end
 
     def clean_model_class_name
-      model_class_name.split("::").last
+      model_class_name.demodulize
     end
 
     def engine_name
