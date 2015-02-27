@@ -8,7 +8,7 @@ module Familyable
       has_many relationships_name.to_sym
       has_many :children, through: relationships_name.to_sym
       has_one inv_relationships_name.to_sym, class_name: relationship_class_name, foreign_key: "child_id"
-      has_one :parent, through: inv_relationships_name.to_sym, source: model_name.to_sym   
+      has_one :parent, through: inv_relationships_name.to_sym, source: family_model_name.to_sym   
     end
     
     # *****************************
@@ -140,11 +140,11 @@ module Familyable
         @relationship_class_name
       end
 
-      def model_name
-       if @model_name.nil?
-           @model_name = "#{self.name.demodulize.downcase}"
+      def family_model_name
+       if @family_model_name.nil?
+           @family_model_name = "#{self.name.demodulize.downcase}"
         end
-        @model_name
+        @family_model_name
       end
 
       def relationships_name
