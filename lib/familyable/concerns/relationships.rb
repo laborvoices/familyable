@@ -23,6 +23,12 @@ module Familyable
       end
     end
 
+    def parent_id
+      unless parent.nil?
+        parent.id
+      end
+    end
+
     def master
       call = elders
       call.where(klass.without_parents_where_sql).first
