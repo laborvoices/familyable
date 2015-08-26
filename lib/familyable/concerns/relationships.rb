@@ -4,7 +4,7 @@ module Familyable
 
     included do
       has_many relationships_name.to_sym
-      has_many :children, through: relationships_name.to_sym
+      has_many :children, -> { distinct }, through: relationships_name.to_sym
       has_one inv_relationships_name.to_sym, class_name: relationship_class_name, foreign_key: "child_id"
       has_one :parent, through: inv_relationships_name.to_sym, source: family_model_name.to_sym   
     end
@@ -32,17 +32,19 @@ module Familyable
       call.where(klass.without_parents_where_sql).first
     end
 
-    def descendents include_self=false
+    def descendents include_self=false, generation_n=nil
       query_call(
         "#{table_name}.id IN (#{descendents_sql_list})",
-        include_self
+        include_self,
+        generation_n
       )
     end
     
-    def elders include_self=false
+    def elders include_self=false, generation_n=nil
       query_call(
         "#{table_name}.id IN (#{elders_sql_list})",
-        include_self
+        include_self,
+        generation_n
       )
     end
 
@@ -53,10 +55,11 @@ module Familyable
       )      
     end
 
-    def family include_self=false
+    def family include_self=false, generation_n=nil
       query_call(
         "#{table_name}.id IN (#{family_sql_list})",
-        include_self
+        include_self,
+        generation_n
       )
     end
 
@@ -184,9 +187,12 @@ module Familyable
     #
     # GENERATION
     #
+
     def set_generation
       self.generation = find_generation
     end
+
+  private
 
     def find_generation adult=nil, n=0
       adult ||= self
@@ -196,9 +202,6 @@ module Familyable
         n
       end
     end
-
-
-  private
 
     #
     #  SQL LISTS
@@ -242,8 +245,9 @@ module Familyable
     # Utils
     #
 
-    def query_call(where_sql,include_self=false)
+    def query_call(where_sql,include_self=false, generation_n=nil)
       call = self.class.where(where_sql)
+      call = call.where(generation:  generation_n) unless generation_n.nil?
       call = call.where.not(id: id) unless include_self
       call    
     end
