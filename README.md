@@ -25,6 +25,7 @@ This is a **[huge](https://github.com/brookisme/familyable-testapp)** performanc
     [x] create relationship concern
     [X] create generators for relationship models
     [X] check that it works with engines
+    [ ] add generation handling
     [ ] generate data for testapp
     [ ] tests tests tests
     [ ] refactor concern
@@ -72,7 +73,25 @@ end
 
 For use inside of rails engines see [this](#rails_engines) note.
 
-##### Step 3: You're done! start coding
+##### Step 3: Add Generation Handling 
+
+Until we create a generator for this step you need to add a call back to the relationships model to handle setting `person.generation`
+
+_app/models/person\_relationship.rb_
+```ruby
+#
+# generation handling 
+#
+before_save :update_generation
+private
+
+def update_generation
+  child.set_generation
+  child.save
+end
+```
+
+##### Step 4: You're done! start coding
 
 quick note: all the instance methods above (accept for master) take an optional parameter *include\_self=false*.  it does what you exactly what you think.
 
