@@ -19,5 +19,13 @@ module Familyable
         gsub_file(relationship_model_path, "belongs_to :child", "belongs_to :child, class_name:\"#{clean_model_class_name}\"") 
       end
     end
+
+    def generation_field
+      if options[:delete]
+        system("bundle exec rails generate migration RemoveGenerationFrom#{model_class_text} generation:integer")
+      else
+        generate "migration", "AddGenerationTo#{model_class_text} generation:integer"
+      end
+    end
   end
 end

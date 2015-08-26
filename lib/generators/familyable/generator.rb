@@ -11,6 +11,10 @@ module Familyable
       @model_name.camelize
     end
 
+    def model_class_text
+      model_class_name.gsub('::','')
+    end
+
     def clean_model_class_name
       model_class_name.demodulize
     end

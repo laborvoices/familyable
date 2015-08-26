@@ -2,8 +2,6 @@ module Familyable
   module Relationships
   extend ActiveSupport::Concern
 
-
-
     included do
       has_many relationships_name.to_sym
       has_many :children, through: relationships_name.to_sym
@@ -180,6 +178,22 @@ module Familyable
         else
           id_sql
         end
+      end
+    end
+
+    #
+    # GENERATION
+    #
+    def set_generation
+      self.generation = find_generation
+    end
+
+    def find_generation adult=nil, n=0
+      adult ||= self
+      if adult.parent
+        find_generation(adult.parent,n+1)
+      else
+        n
       end
     end
 
