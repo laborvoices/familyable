@@ -82,13 +82,14 @@ _app/models/person\_relationship.rb_
 #
 # generation handling 
 #
-before_save :update_generation
+    before_save :update_generation
+
 private
 
-def update_generation
-  child.set_generation
-  child.save
-end
+    def update_generation
+      child.set_generation
+      child.save
+    end
 ```
 
 ##### Step 4: You're done! start coding
