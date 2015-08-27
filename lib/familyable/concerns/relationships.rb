@@ -32,19 +32,19 @@ module Familyable
       call.where(klass.without_parents_where_sql).first
     end
 
-    def descendents include_self=false, generation_n=nil
+    def descendents include_self=false, relative_gen=nil
       query_call(
         "#{table_name}.id IN (#{descendents_sql_list})",
         include_self,
-        generation_n
+        gen(relative_gen)
       )
     end
     
-    def elders include_self=false, generation_n=nil
+    def elders include_self=false, relative_gen=nil
       query_call(
         "#{table_name}.id IN (#{elders_sql_list})",
         include_self,
-        generation_n
+        gen(relative_gen,true)
       )
     end
 
@@ -55,11 +55,11 @@ module Familyable
       )      
     end
 
-    def family include_self=false, generation_n=nil
+    def family include_self=false, relative_gen=nil
       query_call(
         "#{table_name}.id IN (#{family_sql_list})",
         include_self,
-        generation_n
+        gen(relative_gen)
       )
     end
 
@@ -188,11 +188,16 @@ module Familyable
     # GENERATION
     #
 
-    def set_generation
-      self.generation = find_generation
+    def update_generation
+      set_generation
+      save
     end
 
   private
+
+    def set_generation
+      self.generation = find_generation
+    end
 
     def find_generation adult=nil, n=0
       adult ||= self
@@ -200,6 +205,16 @@ module Familyable
         find_generation(adult.parent,n+1)
       else
         n
+      end
+    end
+
+    def gen relative_gen, up=false
+      unless relative_gen.nil?
+        if up
+          (generation + relative_gen)
+        else
+          (generation - relative_gen)
+        end
       end
     end
 
