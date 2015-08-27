@@ -211,9 +211,9 @@ module Familyable
     def gen relative_gen, up=false
       unless relative_gen.nil?
         if up
-          (generation + relative_gen)
-        else
           (generation - relative_gen)
+        else
+          (generation + relative_gen)
         end
       end
     end
