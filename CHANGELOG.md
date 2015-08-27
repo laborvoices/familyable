@@ -1,2 +1,2 @@
-#### 0.0.2alpha
+#### 0.0.2
 * add generation support
