@@ -4,7 +4,7 @@ module Familyable
 
     included do
       has_many relationships_name.to_sym, dependent: :destroy
-      has_many :children, -> { uniq }, through: relationships_name.to_sym
+      has_many :children, -> { distinct }, through: relationships_name.to_sym
       has_one inv_relationships_name.to_sym, class_name: relationship_class_name, foreign_key: "child_id"
       has_one :parent, through: inv_relationships_name.to_sym, source: family_model_name.to_sym   
     end
